@@ -1,6 +1,6 @@
 {
   "name": "startover",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Rerun scripts on file changes",
   "main": "index.js",
   "scripts": {

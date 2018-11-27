@@ -2,6 +2,23 @@
 
 Hey, this is fresh, but essentially I'm trying to do something like `nodemon`
 
+## Installing Startover
+
+We can install Startover globally from NPM
+
+```bash
+npm i -g startover
+```
+
+## Run Startover 
+
+We can run startover once it is installed with the following command
+
+```powershell 
+startover -d myapp -f hello.js,"bye world.html" -e css,md -c "npm run build" -D test,
+```
+It is important to remember that the command/commands we are running from the `-c` option must be compatible with the system/shell we are running `startover` in and they will run one after the other
+
 ## Running Dev
 
 Clone the GitHub Repo, and then install the app dependencies and install the application globally
@@ -16,14 +33,6 @@ Next we can link NPM to our actual package instead of the global version with
 ```powershell 
 npm link
 ```
-## Run Startover 
-
-We can run startover once it is installed with the following command
-
-```powershell 
-startover -d myapp -f hello.js,"bye world.html" -e css,md -c "npm run build" -D test,
-```
-It is important to remember that the command/commands we are running from the `-c` option must be compatible with the system/shell we are running `startover` in and they will run one after the other
 
 ## Resources 
 
