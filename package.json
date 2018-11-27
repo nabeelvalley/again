@@ -33,6 +33,7 @@
   },
   "homepage": "https://github.com/nabeelvalley/startover#readme",
   "dependencies": {
+    "chokidar": "^2.0.4",
     "commander": "^2.19.0"
   }
 }
