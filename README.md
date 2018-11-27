@@ -1,6 +1,6 @@
 # Startover
 
-Hey, this is fresh, but essentially I'm trying to do something like `nodemon`
+Hey, this is fresh, but essentially it's a little command line tool that will let you watch for file changes and run specific scripts when files are changed, suggestions, bugs reports, and feature requests welcome
 
 ## Installing Startover
 
