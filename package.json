@@ -1,0 +1,32 @@
+{
+  "name": "again",
+  "version": "0.0.0",
+  "description": "Rerun scripts on file change",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nabeelvalley/again.git"
+  },
+  "keywords": [
+    "restart",
+    "refresh",
+    "reboot",
+    "watch",
+    "file",
+    "watch",
+    "run",
+    "script",
+    "script",
+    "command",
+    "node"
+  ],
+  "author": "Nabeel Valley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nabeelvalley/again/issues"
+  },
+  "homepage": "https://github.com/nabeelvalley/again#readme"
+}
