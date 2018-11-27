@@ -1,4 +1,4 @@
-# Startover NPM Package
+# Startover
 
 Hey, this is fresh, but essentially I'm trying to do something like `nodemon`
 
