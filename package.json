@@ -1,14 +1,17 @@
 {
-  "name": "again",
+  "name": "startover",
   "version": "0.0.0",
-  "description": "Rerun scripts on file change",
+  "description": "Rerun scripts on file changes",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": {
+    "startover": "./index.js"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nabeelvalley/again.git"
+    "url": "git+https://github.com/nabeelvalley/startover.git"
   },
   "keywords": [
     "restart",
@@ -26,7 +29,10 @@
   "author": "Nabeel Valley",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nabeelvalley/again/issues"
+    "url": "https://github.com/nabeelvalley/startover/issues"
   },
-  "homepage": "https://github.com/nabeelvalley/again#readme"
+  "homepage": "https://github.com/nabeelvalley/startover#readme",
+  "dependencies": {
+    "commander": "^2.19.0"
+  }
 }
