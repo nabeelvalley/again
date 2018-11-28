@@ -1,6 +1,8 @@
 # Startover
 
-Hey, this is fresh, but essentially it's a little command line tool that will let you watch for file changes and run specific scripts when files are changed, suggestions, bugs reports, and feature requests welcome
+Hey, this is fresh, but essentially it's a little command line tool that will let you watch for file changes and run specific commands when files are changed , not just node commands, suggestions, bugs reports, and feature requests welcome
+
+**note this will run any system commands**
 
 ## Installing Startover
 
