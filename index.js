@@ -7,11 +7,24 @@ const child_process = require('child_process')
 const split = val => val.split(',')
 
 const execute = () => {
+    app.runAsync ? execAsync() : execSync()
+}
+
+const execSync = () => {
     command = app.commands.join(' && ')
     child_process.exec(command, function(error, stdout, stderr) {
         if (stdout) console.log('command out:\n ' + stdout)
         if (stderr) console.log('stderr:\n' + stderr)
         if (error !== null) console.log('exec error: ' + error)
+    })
+}
+const execAsync = () => {
+    app.commands.forEach(command => {
+        child_process.exec(command, function(error, stdout, stderr) {
+            if (stdout) console.log('command out:\n ' + stdout)
+            if (stderr) console.log('stderr:\n' + stderr)
+            if (error !== null) console.log('exec error: ' + error)
+        })
     })
 }
 
@@ -42,6 +55,7 @@ app.version('0.1.0')
         'List of Directories to Exclude from Watch',
         split
     )
+    .option('-a, --run-async', 'Run commands asynchronously [false]', false)
     .parse(process.argv)
 
 console.log('Called with the following Options')
@@ -53,13 +67,17 @@ if (app.excludeExtensions)
     console.log('excluded extensions:', app.excludeExtensions)
 if (app.excludeDirectories)
     console.log('excluded directories:', app.excludeDirectories)
+if (app.runAsync) 
+console.log('run commands async:', app.runAsync)
+
+execute()
 
 // Initialize watcher.
 var watcher = chokidar.watch(app.watchDirs ? app.watchDirs : '.', {
     ignored: new Array().concat(
         app.excludeDirectories,
         app.excludeFiles,
-        new RegExp(app.excludeExtensions.map(el => '\.' + el).join('|')),
+        new RegExp(app.excludeExtensions.map(el => '.' + el).join('|')),
         /(^|[\/\\])\../
     ),
     persistent: true
