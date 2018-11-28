@@ -77,7 +77,7 @@ var watcher = chokidar.watch(app.watchDirs ? app.watchDirs : '.', {
     ignored: new Array().concat(
         app.excludeDirectories,
         app.excludeFiles,
-        new RegExp(app.excludeExtensions.map(el => '.' + el).join('|')),
+        app.excludeExtensions? new RegExp(app.excludeExtensions.map(el => '.' + el).join('|')) : [],
         /(^|[\/\\])\../
     ),
     persistent: true
