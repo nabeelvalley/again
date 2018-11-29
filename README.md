@@ -36,7 +36,7 @@ Or is as follows
 Options:
   -V, --version                                       output the version number
   -d, --watch-dirs [directories]                      List of directories to watch, by default will watch current directory
-  -c, --commands [directory]                          List of Commands to run when files change
+  -c, --commands [commands]                          List of Commands to run when files change
   -f, --exclude-files [files to exclude]              List of Files to Exclude from Watch
   -e, --exclude-extensions [extensions to exclude]    List of Extensions to Exclude from Watch
   -D, --exclude-directories [directories to exclude]  List of Directories to Exclude from Watch

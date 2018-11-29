@@ -7,7 +7,7 @@ const child_process = require('child_process')
 const split = val => val.split(',')
 
 const execute = () => {
-    app.runAsync ? execAsync() : execSync()
+    if (ready && app.commands.length) app.runAsync ? execAsync() : execSync()
 }
 
 const execSync = () => {
@@ -36,7 +36,7 @@ app.version('0.1.0')
         split
     )
     .option(
-        '-c, --commands [directory]',
+        '-c, --commands [commands]',
         'List of Commands to run when files change',
         split
     )
@@ -61,23 +61,24 @@ app.version('0.1.0')
 console.log('Called with the following Options')
 
 if (app.watchDirs) console.log('watch dirs:', app.watchDirs)
-if (app.commands) console.log('commands:', app.commands)
+if (app.commands.length) console.log('commands:', app.commands)
 if (app.excludeFiles) console.log('excluded files:', app.excludeFiles)
 if (app.excludeExtensions)
     console.log('excluded extensions:', app.excludeExtensions)
 if (app.excludeDirectories)
     console.log('excluded directories:', app.excludeDirectories)
-if (app.runAsync) 
-console.log('run commands async:', app.runAsync)
+if (app.runAsync) console.log('run commands async:', app.runAsync)
 
-execute()
+if (app.commands.length > 0) execute()
 
 // Initialize watcher.
 var watcher = chokidar.watch(app.watchDirs ? app.watchDirs : '.', {
     ignored: new Array().concat(
         app.excludeDirectories,
         app.excludeFiles,
-        app.excludeExtensions? new RegExp(app.excludeExtensions.map(el => '.' + el).join('|')) : [],
+        app.excludeExtensions
+            ? new RegExp(app.excludeExtensions.map(el => '.' + el).join('|'))
+            : [],
         /(^|[\/\\])\../
     ),
     persistent: true
@@ -91,21 +92,24 @@ var log = console.log.bind(console)
 var ready = false
 
 watcher
-    .on('add', path => console.log(`File ${path} has been added`))
+    .on('add', path => {
+        execute()
+        log(`File ${path} has been added`)
+    })
     .on('change', path => {
-        if (ready) execute()
+        execute()
         log(`File ${path} has been changed`)
     })
     .on('unlink', path => {
-        if (ready) execute()
+        execute()
         log(`File ${path} has been removed`)
     })
     .on('addDir', path => {
-        if (ready) execute()
+        execute()
         log(`Directory ${path} has been added`)
     })
     .on('unlinkDir', path => {
-        if (ready) execute()
+        execute()
         log(`Directory ${path} has been removed`)
     })
     .on('error', error => log(`Watcher error: ${error}`))
